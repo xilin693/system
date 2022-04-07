@@ -1,0 +1,8 @@
+<?php
+
+use king\lib\Env;
+
+return [
+    'key' => Env::get('jwt.key'),
+    'ban_token' => []
+];

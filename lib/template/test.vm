@@ -1,0 +1,13 @@
+<?php
+
+namespace app\controller\www;
+
+use king\Controller;
+
+class Test extends Controller
+{
+    public function index()
+    {
+        echo 'Hello World!';
+    }
+}
