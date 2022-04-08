@@ -298,15 +298,10 @@ class Model
 
     public function column($column = '')
     {
-        if ($column) {
-            $this->field($column);
-        } else {
-            $column = $this->getSelectColumn();
-            if (!$column) {
-                Error::showError('value方法必须定义字段');
-            }
+        $column = $column ?: $this->getSelectColumn();
+        if (!$column) {
+            Error::showError('value方法必须定义字段');
         }
-
         return $this->get(['column', $column]);
     }
 
