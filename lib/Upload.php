@@ -126,6 +126,11 @@ class Upload extends Instance
         return $ext;
     }
 
+    public function saveFile($field = 'userfile', $filename = '', $directory = null)
+    {
+        return $this->save($filename, $directory, 0, $field);
+    }
+
     /**
      * 上传图片
      * @param number $is_img　是否为图片
