@@ -121,7 +121,7 @@ class Response
         }
     }
 
-    public static function sendSuccessJson($body)
+    public static function sendSuccessJson($body = '')
     {
         return self::sendResponseJson(200, $body);
     }
