@@ -121,6 +121,11 @@ class Response
         }
     }
 
+    public static function sendSuccessJson($body)
+    {
+        return self::sendResponseJson(200, $body);
+    }
+
     public static function sendResponse($status = 200, $body = '', $content_type = 'text/html')
     {
         $header = 'HTTP/1.1 ' . $status . ' ' . self::$codes[$status];
