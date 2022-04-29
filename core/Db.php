@@ -105,6 +105,7 @@ class Db
             $dsn = 'mysql:host=' . $this->db['host'] . ';port=' . $port . ';dbname=' . $this->db['db'] . ';charset=' . $charset;
 
             try {
+                $options = $this->db['options'] ?? $options;
                 $this->links[$link_id] = new PDO($dsn, $this->db['user'], $this->db['password'], $options);
             } catch (\PDOException $e) {
                 Log::write($e->getMessage());
