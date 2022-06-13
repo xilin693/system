@@ -1,7 +1,7 @@
 # system
  php king 框架
 ## 框架文档:
-http://example.fjlssy.cn/king
+http://doc.xilin.site
 
 * 框架说明 
     * 绝对不是功能最强的框架,但绝对是写代码最少的框架
