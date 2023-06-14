@@ -195,6 +195,18 @@ class Valid extends Instance
         }
     }
 
+    public function minLen($value, $val, $label = '') {
+        return $this->minLength($value, $val, $label);
+    }
+
+    public function maxLen($value, $val, $label = '') {
+        return $this->maxLength($value, $val, $label);
+    }
+
+    public function len($value, $val, $label = '') {
+        return $this->length($value, $val, $label);
+    }
+
     public function minLength($value, $val, $label = '')
     {
         if (preg_match("/[^0-9]/", $val)) {

@@ -72,6 +72,39 @@ class Response
         exit;
     }
 
+    public static function sendResponseCode($status, $code = '')
+    {
+        $code = self::getCode($code) ?: 'Code not existed';
+        return self::sendResponseJson($status, $code);
+    }
+
+    public static function sendSuccessCode($code = '')
+    {
+        $code = self::getCode($code) ?: 'Ok';
+        return self::sendSuccessJson($code);
+    }
+
+    private static function getCode($code)
+    {
+        $lang_locate = C('lang');
+        if (empty($lang_locate)) {
+            if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+                preg_match('/^([a-z\d\-]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches);
+                $lang_locate = strtolower($matches[1]);
+            } else {
+                $lang_locate = 'zh-cn';
+            }
+        }
+
+        $code_file = APP_PATH . '/code/' . $lang_locate . EXT;
+        if (is_file($code_file)) {
+            $codes = require $code_file;
+            return $codes[$code] ?? '';
+        } else {
+            throw new BadRequestHttpException('language code error');
+        }
+    }
+
     public static function sendResponseJson($status, $body = '', $type = '')
     {
         self::$code = $status;
