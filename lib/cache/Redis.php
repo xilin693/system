@@ -26,7 +26,7 @@ class Redis extends \Redis
         }
 
         try {
-            $success = $this->connect($default_config['host'], $default_config['port']);
+            $success = $this->connect($default_config['host'], $default_config['port'], 3);
             if (!$success) {
                 Error::showError('Cache: Redis 连接失败，请检查配置。');
             }
